@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="description" content=""/>
+        <meta name="author" content="Daniel Lanna"/>
+
+        <title>:: ADM Cond ::</title>
+
+        <link href="./css/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+        <link href="./css/bootstrap/css/half-slider.css" rel="stylesheet"/>
+
+        <link rel="stylesheet" href="./css/validator/dist/css/bootstrapValidator.min.css"/>
+
+        <script type="text/javascript" src="./css/bootstrap/js/bootstrap.min.js"></script>
+          <!-- Script que ativa o carrocel -->
+        <script>
+            $('.carousel').carousel({
+                interval: 5000 //changes the speed
+            })
+        </script>
+    </h:head>
+
+    <h:body>
+        <h:form>
+            <p:growl id="messages"/>
+            <p:menubar style="alignment-baseline: central"  >
+                <p:menuitem value="Sobre" url="template/sobre.xhtml" icon="ui-icon-help" />
+                <p:menuitem value="Cadastre-se" url="template/cadastro.xhtml" icon="ui-icon-pencil" />
+                <p:menuitem value="Contatos" url="template/contato.xhtml" icon="ui-icon-contact" />
+                <p:menuitem value="Sustentabilidade" url="template/susten.xhtml" icon="ui-icon-newwin" />
+
+                <f:facet name="options">
+                    <p:commandButton type="button" value="Logout" icon="ui-icon-extlink" ajax="false" />
+                </f:facet>
+            </p:menubar>
+        </h:form>
+
+        <div id="myCarousel" class="carousel slide">
+
+            <!--		 Indicadores    -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Slides -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="fill"
+                         style="background-image: url('images/bg4.png'); margin-top: 3%"></div>
+                    <div class="carousel-caption">
+                        <h1>Administração de Condomínio!</h1>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="fill"
+                         style="background-image: url('images/dinheiro.jpg'); margin-top: 3%;"></div>
+                    <div class="carousel-caption">
+                        <h1>Melhor controle de Gastos e Despesas!</h1>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="fill"
+                         style="background-image: url('images/verde.jpg'); margin-top: 3%; margin-bottom: 3%;"></div>
+                    <div class="carousel-caption">
+                        <h1>Programação especial para Coletas Seletivas</h1>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controles (BOTOES) -->
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="icon-prev"></span>
+            </a> <a class="right carousel-control" href="#myCarousel"
+                    data-slide="next"> <span class="icon-next"></span>
+            </a>
+        </div>
+                <div class="container">
+                    <div class="row section">
+                        <div class="col-lg-12">
+                                <table class="modal-body ">
+                                    <tr>
+                                        <td  align="center" >
+                                            <p:panel>
+                                            <h4>Acesse o Sistema!</h4>
+                                            <p:ajaxStatus onstart="PF('statusDialog').show()" oncomplete="PF('statusDialog').hide()" />
+                                                <p:dialog  header="Values" resizable="false" position="center" widgetVar="statusDialog" modal="true" draggable="false" closable="false" showHeader="false" >
+                                                    <p:graphicImage >
+                                                        <img src="images/ajax-loader.gif" align="center"></img>
+                                                    </p:graphicImage>
+                                                </p:dialog>
+                                            <h:form>       
+                                                <p:growl id="growl" sticky="true" showDetail="true" life="3000"  autoUpdate="true"/>
+                                                <p:panelGrid columns="2" >
+                                                    <h:outputLabel for="username" value="Login:" />
+                                                    <p:inputText id="username" value="#{login.username}" required="true" label="Login: " requiredMessage="Favor Digitar o Login" />
+                                                    <h:outputLabel for="password" value="Senha:" />
+                                                    <p:password id="password" value="#{login.password}" required="true" label="Senha: " requiredMessage="Favor Digitar a Senha" />
+                                                </p:panelGrid><br/>
+                                                <p:commandButton value="Login" action="#{login.login()}" update="@form"/>
+                                            </h:form>
+                                            </p:panel> 
+                                        </td>
+                                        <td align="center" >
+                                            <div class="row section">
+                                                <div class="col-lg-12">
+                                                    <h3 align="center">Gostou?</h3>
+                                                    <p>
+                                                        Então Cadastre-se para para receber e-mails promocionais e para que possamos entrar em contato com você!
+                                                        <br/><br/>
+                                                        É rápido, facil e grátis! <br/>
+                                                        Não perca tempo! <a href="#/cadastro">Clique aqui</a>  e receba o melhor software para gerenciar seu condomínio.
+                                                        <br/><br/>
+                                                        Para mais informações acesse: <br/>
+                                                        <a href="#/sobre">Sobre Nós</a><br/>
+                                                        <br/>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
+                    <footer>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <p>Todos os Dieiros Reservados - 2014</p>
+                            </div>
+                        </div>
+                    </footer>
+    </h:body>
+
+</html>
+

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="description" content=""/>
+        <meta name="author" content="Daniel Lanna"/>
+        <title>:: ADM Cond ::</title>
+    </h:head>
+
+    <h:body>
+        <h:form>
+            <p:growl id="messages"/>
+            <p:menubar style="alignment-baseline: central"  >
+                <p:menuitem value="Página Inicial" url="../home.xhtml" icon="ui-icon-home" />
+
+                <p:submenu label="Cadastro" icon="ui-icon-disk">
+                    <p:menuitem value="Condomínio" url="../Condominio/cadastro.xhtml" />
+                    <p:menuitem value="Bloco" url="../Bloco/cadastro.xhtml" />
+                    <p:menuitem value="Proprietário" url="../Proprietario/cadastro.xhtml" />
+                    <p:menuitem value="Apartamento" url="../Apartamento/cadastro.xhtml" />
+                    <p:menuitem value="Despesa" url="#" />
+                </p:submenu>
+
+                <p:submenu label="Consulta" icon="ui-icon-document">
+                    <p:menuitem value="Condomínio" url="../Condominio/listar.xhtml" />
+                    <p:menuitem value="Bloco" url="../Bloco/listar.xhtml" />
+                    <p:menuitem value="Proprietário" url="../Proprietario/listar.xhtml" />
+                    <p:menuitem value="Apartamento" url="../Apartamento/listar.xhtml" />
+                    <p:menuitem value="Despesa" url="#" />
+                </p:submenu>
+
+                <f:facet name="options">
+                    <p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
+                </f:facet>
+            </p:menubar>
+        </h:form>
+        <div>
+            <div class="container">
+                <div class="row section">
+                    <div class="col-lg-12" align="center" >
+                        <br/>
+                        <p:panel>
+                            <p:ajaxStatus onstart="PF('statusDialog').show()" oncomplete="PF('statusDialog').hide()" />
+                            <p:dialog  header="Values" resizable="false" position="center" widgetVar="statusDialog" modal="true" draggable="false" closable="false" showHeader="false" >
+                                <p:graphicImage >
+                                    <img src="../../images/ajax-loader.gif" align="center"></img>
+                                </p:graphicImage>
+                            </p:dialog>
+                            <h:form id="formCad">
+                                <p:growl id="growl" sticky="true" showDetail="true" life="3000"  autoUpdate="true"/>
+                                <p:panel>
+                                    <p:panelGrid columns="2">
+                                    <p:outputLabel value="Escolha o Bloco:" />  
+                                    <p:selectOneMenu effect="fold" value="#{apartamento.apart.bloco}"  required="true" requiredMessage="O Campo Bloco é Obrigatório!" converter="blocoConverter">
+                                        <f:selectItem  itemLabel="Selecione" itemValue="#{null}"  />
+                                        <f:selectItems   var="abc" itemValue="#{abc}" itemLabel="#{abc.nomeBloco}" value="#{apartamento.blocos}"/>
+                                    </p:selectOneMenu>
+                                    </p:panelGrid>
+                                </p:panel>
+                                <br/>
+                                <p:panel>
+                                    <p:panelGrid columns="2">
+                                    <p:outputLabel value="Escolha o Proprietário: " />  
+                                    <p:selectOneMenu effect="fold" value="#{apartamento.apart.proprietario}" required="true" requiredMessage="O Campo Proprietário é Obrigatório!" converter="proprietarioConverter">
+
+                                        <f:selectItem  itemLabel="Selecione" itemValue="#{null}"  />
+                                        <f:selectItems  var="prop" itemValue="#{prop}" itemLabel="#{prop.nome}"  value="#{apartamento.proprietarios}" />
+                                    </p:selectOneMenu>
+                                    </p:panelGrid>
+                                </p:panel>
+                                <br/>
+                                <p:panel>
+                                    <p:outputLabel value="Cadastro de Apartamento"/>
+                                    <p:panelGrid columns="2">
+                                        <p:outputLabel value="Numero"/>
+                                        <p:inputText value="#{apartamento.apart.numApart}" required="true" requiredMessage="O Campo Número é Obrigatório!"/>
+
+                                        <p:outputLabel value="Observação"/>
+                                        <p:inputText value="#{apartamento.apart.obsApart}" required="true" requiredMessage="O Campo Observação é Obrigatório!"/>
+                                    </p:panelGrid>
+                                </p:panel>
+                                <br/>
+                                <p:commandButton action="#{apartamento.salvar}" value="Salvar"  update="@form,:formList"/>
+                            </h:form>
+                        </p:panel>
+                        <br/>
+                        <h:form id="formList">
+                            <p:panel>
+                                <p:dataTable var="apt" value="#{apartamento.apartamentos}" id="dtApart" widgetVar="dtApart" 
+                                             rows="5" paginator="true"> 
+                                    <p:column headerText="Número do Apartamento">
+                                        <h:outputText value="#{apt.numApart}" />
+                                    </p:column>
+                                    <p:column headerText="Observações do Apartamento">
+                                        <h:outputText value="#{apt.obsApart}" />
+                                    </p:column>
+                                    <p:column headerText="Bloco">
+                                        <h:outputText value="#{apt.bloco.nomeBloco}" />
+                                    </p:column>
+                                    <p:column headerText="Proprietário do Apartamento">
+                                        <h:outputText value="#{apt.proprietario.nome}" />
+                                    </p:column>
+                                    <p:column headerText="Ações" width="110" style="text-align: center">
+                                        <p:commandButton icon="ui-icon-pencil" action="#{apartamento.editar(apt)}" title="Editar"  update=":formCad">
+                                            <p:confirm header="Confirmation" message="Tem Certeza que deseja Editar o Condomínio?" icon="ui-icon-alert" />
+                                        </p:commandButton>
+                                        <p:commandButton icon="ui-icon-closethick" action="#{apartamento.excluir(apt)}" title="Excluir"  update="@form,:formList">
+                                            <p:confirm header="Confirmação" message="Tem Certeza que deseja Exluir o Condomínio?" icon="ui-icon-alert" />
+                                        </p:commandButton>
+                                    </p:column>
+                                </p:dataTable>
+                            </p:panel>
+                            <p:confirmDialog global="true" showEffect="fade" hideEffect="explode" closable="false">
+                                <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                            </p:confirmDialog>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <hr/>
+
+        <footer>
+            <div class="row" align="center">
+                <div class="col-lg-12">
+                    <p>Todos os Dieiros Reservados - 2014</p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- /container -->
+
+    </h:body>
+
+</html>

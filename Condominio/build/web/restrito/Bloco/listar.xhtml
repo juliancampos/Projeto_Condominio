@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script>
+            $(document).ready(function() {
+                visible(true);
+            });
+        </script>
+    </head>
+    <body>
+        <br/><br/><br/><br/>
+        <div class="container">
+            <table cellpadding="0" cellspacing="0" border="0" class="table" id="dyntable">
+                <thead>
+                    <tr>
+                        <th >Id do Bloco</th>
+                        <th >Nome do Bloco</th>
+                        <th >Observações do Bloco</th>
+                        <th >Ações</th>
+                    </tr>
+                </thead>
+                <tbody ng:repeat="bloco in blocos" >
+                    <tr>
+                        <td>{{bloco.idBloco}}</td>
+                        <td>{{bloco.NomeBloco}}</td>
+                        <td>{{bloco.obsBloco}}</td>
+                        <td>
+                            <button class="btn btn-mini btn-success" ng-click="linkBloco(bloco)" title="Editar"><i class="glyphicon glyphicon-pencil"></i></button>
+                            <button class="btn btn-mini btn-danger" ng-click="deleteBloco(bloco)" title="Excluir"><i class="glyphicon glyphicon-remove"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="description" content=""/>
+        <meta name="author" content="Daniel Lanna"/>
+        <title>:: ADM Cond ::</title>
+    </h:head>
+
+    <h:body>
+        <h:form>
+            <p:growl id="messages"/>
+            <p:menubar style="alignment-baseline: central"  >
+                <p:menuitem value="Página Inicial" url="../home.xhtml" icon="ui-icon-home" />
+
+                <p:submenu label="Cadastro" icon="ui-icon-disk">
+                    <p:menuitem value="Condomínio" url="../Condominio/cadastro.xhtml" />
+                    <p:menuitem value="Bloco" url="../Bloco/cadastro.xhtml" />
+                    <p:menuitem value="Proprietário" url="../Proprietario/cadastro.xhtml" />
+                    <p:menuitem value="Apartamento" url="../Apartamento/cadastro.xhtml" />
+                    <p:menuitem value="Despesa" url="#" />
+                </p:submenu>
+
+                <p:submenu label="Consulta" icon="ui-icon-document">
+                    <p:menuitem value="Condomínio" url="../Condominio/listar.xhtml" />
+                    <p:menuitem value="Bloco" url="../Bloco/listar.xhtml" />
+                    <p:menuitem value="Proprietário" url="../Proprietario/listar.xhtml" />
+                    <p:menuitem value="Apartamento" url="../Apartamento/listar.xhtml" />
+                    <p:menuitem value="Despesa" url="#" />
+                </p:submenu>
+
+                <f:facet name="options">
+                    <p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
+                </f:facet>
+            </p:menubar>
+        </h:form>
+        <div>
+            <div class="container">
+                <div class="row section">
+                    <div class="col-lg-12" align="center">
+                        <p:panel >
+                            <p:ajaxStatus onstart="PF('statusDialog').show()" oncomplete="PF('statusDialog').hide()" />
+                            <p:dialog  header="Values" resizable="false" position="center" widgetVar="statusDialog" modal="true" draggable="false" closable="false" showHeader="false" >
+                                <p:graphicImage >
+                                    <img src="../../images/ajax-loader.gif" align="center"></img>
+                                </p:graphicImage>
+                            </p:dialog>
+                            <h:form>
+                                <p:growl id="growl" sticky="true" showDetail="true" life="3000"  autoUpdate="true"/>
+                                <p:panel >
+                                    <h:outputLabel value="Cadastro de Condomínio" />
+                                    <hr/>
+                                    <p:panelGrid columns="2">
+                                        <h:outputLabel for="NomeCond" value="Nome do Condomínio: " />
+                                        <p:inputText id="NomeCond" value="#{condominio.nomeCond}"  label="Nome do Condominio" required="true" requiredMessage="Nome do Condominio é Obrigatório" />
+                                    </p:panelGrid>
+                                </p:panel >
+                                <br/>
+                                <p:panel >
+                                    <h:outputLabel value="Dados para a Geração dos Boletos" />
+                                    <hr/>
+                                    <p:panelGrid columns="2">
+                                        <h:outputLabel value="Conta: " />
+                                        <p:inputText   value="#{condominio.conta}"   required="true" requiredMessage=" Conta é Obrigatório" />
+                                        <h:outputLabel value="Dígido da Conta:" />
+                                        <p:inputText    value="#{condominio.digitoConta}"   required="true" requiredMessage="Dígido da Conta  é Obrigatório"  />
+                                        <h:outputLabel value="Agencia: " />
+                                        <p:inputText   value="#{condominio.agencia}"  required="true" requiredMessage=" Agencia é Obrigatório" />
+                                        <h:outputLabel value="Dígito da Agencia: " />
+                                        <p:inputText  value="#{condominio.digitoAgencia}"  required="true" requiredMessage="Dígito da Agencia  é Obrigatório"  />
+                                        <h:outputLabel value="CNPJ: " />
+                                        <p:inputMask  mask="99.999.999/9999-99" value="#{condominio.identificao}"   required="true" requiredMessage="CNPJ  é Obrigatório"  />
+                                    </p:panelGrid>
+
+                                </p:panel>
+                                <br/>
+                                <p:panel >
+                                    <h:outputLabel value="Endereço do Condomínio" />
+                                    <hr/>
+                                    <p:panelGrid columns="2">
+                                        <h:outputLabel value="Rua: " />
+                                        <p:inputText      value="#{condominio.rua}"  required="true" requiredMessage="Rua  é Obrigatório" />
+
+                                        <h:outputLabel value="Bairro: " />
+                                        <p:inputText     value="#{condominio.bairro}"  required="true" requiredMessage="Bairro  é Obrigatório" />
+
+                                        <h:outputLabel value="Número: " />
+                                        <p:inputText     value="#{condominio.numero}"  required="true" requiredMessage="Número  é Obrigatório" />
+
+                                        <h:outputLabel value="Estado: " />
+                                        <p:selectOneMenu value="#{condominio.estado}" effect="fold" required="true" requiredMessage="Estado  é Obrigatório">
+                                            <f:selectItem  itemLabel="Selecione" itemValue="" />
+                                            <f:selectItem  itemLabel="Acre" itemValue="Acre"/>
+                                            <f:selectItem  itemLabel="Alagoas" itemValue="Alagoas"/>
+                                            <f:selectItem  itemLabel="Amapa" itemValue="Amapa"/>
+                                            <f:selectItem  itemLabel="Amazonas" itemValue="Amazonas"/>
+                                            <f:selectItem  itemLabel="Bahia" itemValue="Bahia"/>
+                                            <f:selectItem  itemLabel="Ceara" itemValue="Ceara"/>
+                                            <f:selectItem  itemLabel="Distrito Federal" itemValue="Distrito Federal"/>
+                                            <f:selectItem  itemLabel="Espirito Santo" itemValue="Espirito Santo"/>
+                                            <f:selectItem  itemLabel="Goias" itemValue="Goias"/>
+                                            <f:selectItem  itemLabel="Maranhao" itemValue="Maranhao"/>
+                                            <f:selectItem  itemLabel="Mato Grosso" itemValue="Mato Grosso"/>
+                                            <f:selectItem  itemLabel="Mato Grosso do Sul" itemValue="Mato Grosso do Sul"/>
+                                            <f:selectItem  itemLabel="Minas Gerais" itemValue="Minas Gerais"/>
+                                            <f:selectItem  itemLabel="Para" itemValue="Para"/>
+                                            <f:selectItem  itemLabel="Paraiba" itemValue="Paraiba"/>
+                                            <f:selectItem  itemLabel="Parana" itemValue="Parana"/>
+                                            <f:selectItem  itemLabel="Pernambuco" itemValue="Pernambuco"/>
+                                            <f:selectItem  itemLabel="Piaui" itemValue="Piaui"/>
+                                            <f:selectItem  itemLabel="Rio de Janeiro" itemValue="Rio de Janeiro"/>
+                                            <f:selectItem  itemLabel="Rio Grande Do Norte" itemValue="Rio Grande Do Norte"/>
+                                            <f:selectItem  itemLabel="Rio Grande Do Sul" itemValue="Rio Grande Do Sul"/>
+                                            <f:selectItem  itemLabel="Rondonia" itemValue="Rondonia"/>
+                                            <f:selectItem  itemLabel="Roramia" itemValue="Roramia"/>
+                                            <f:selectItem  itemLabel="Santa Cataria" itemValue="Santa Cataria"/>
+                                            <f:selectItem  itemLabel="Sao Paulo" itemValue="Sao Paulo"/>
+                                            <f:selectItem  itemLabel="Sergipe" itemValue="Sergipe"/>
+                                            <f:selectItem  itemLabel="Tocantins" itemValue="Tocantins"/>
+                                        </p:selectOneMenu>
+
+                                        <h:outputLabel value="Cidade: " />
+                                        <p:inputText     value="#{condominio.cidade}"  required="true" requiredMessage="Cidade é Obrigatório" />
+
+                                        <h:outputLabel value="CEP: " />
+                                        <p:inputMask  mask="99999-999"  value="#{condominio.cep}"  required="true" requiredMessage="CEP  é Obrigatório" />
+                                    </p:panelGrid>
+                                </p:panel>
+                                <br/>
+                                <p:commandButton  action="#{condominio.salvar()}" value="Salvar" rendered="#{condominio.listCondominio().size() == 0 || condominio.isEditar}" update="@form"/>
+                            </h:form>
+                        </p:panel >
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr/>
+
+        <footer>
+            <div class="row" align="center">
+                <div class="col-lg-12">
+                    <p:outputLabel value="Todos os Dieiros Reservados - 2014 " />
+                </div>
+            </div>
+        </footer>
+
+    </h:body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="description" content=""/>
+        <meta name="author" content="Daniel Lanna"/>
+        <title>:: ADM Cond ::</title>
+    </h:head>
+
+    <h:body>
+        <h:form>
+            <p:growl id="messages"/>
+            <p:menubar style="alignment-baseline: central"  >
+                <p:menuitem value="Página Inicial" url="../home.xhtml" icon="ui-icon-home" />
+
+                <p:submenu label="Cadastro" icon="ui-icon-disk">
+                    <p:menuitem value="Condomínio" url="../Condominio/cadastro.xhtml" />
+                    <p:menuitem value="Bloco" url="../Bloco/cadastro.xhtml" />
+                    <p:menuitem value="Proprietário" url="../Proprietario/cadastro.xhtml" />
+                    <p:menuitem value="Apartamento" url="../Apartamento/cadastro.xhtml" />
+                    <p:menuitem value="Despesa" url="#" />
+                </p:submenu>
+
+                <p:submenu label="Consulta" icon="ui-icon-document">
+                    <p:menuitem value="Condomínio" url="../Condominio/listar.xhtml" />
+                    <p:menuitem value="Bloco" url="../Bloco/listar.xhtml" />
+                    <p:menuitem value="Proprietário" url="../Proprietario/listar.xhtml" />
+                    <p:menuitem value="Apartamento" url="../Apartamento/listar.xhtml" />
+                    <p:menuitem value="Despesa" url="#" />
+                </p:submenu>
+
+                <f:facet name="options">
+                    <p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
+                </f:facet>
+            </p:menubar>
+        </h:form>
+        <h:form>
+            <p:panel>
+                    <p:growl id="growl" life="2000" />
+                    <p:dataTable var="apt" value="#{apartamento.apartamentos}">
+                        <p:column headerText="Número do Apartamento">
+                            <h:outputText value="#{apt.numApart}" />
+                        </p:column>
+                        <p:column headerText="Observações do Apartamento">
+                             <h:outputText value="#{apt.obsApart}" />
+                        </p:column>
+                        <p:column headerText="Bloco">
+                            <h:outputText value="#{apt.bloco.nomeBloco}" />
+                        </p:column>
+                        <p:column headerText="Proprietário do Apartamento">
+                            <h:outputText value="#{apt.proprietario.nome}" />
+                        </p:column>
+                    </p:dataTable>
+            </p:panel>
+        </h:form>
+    </h:body>
+</html>

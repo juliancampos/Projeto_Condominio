@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="description" content=""/>
+        <meta name="author" content="Daniel Lanna"/>
+
+        <title>:: ADM Cond ::</title>
+
+        <link href="../css/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+        <link href="../css/bootstrap/css/half-slider.css" rel="stylesheet"/>
+
+        <link rel="stylesheet" href="../css/validator/dist/css/bootstrapValidator.min.css"/>
+
+        <script src="../css/bootstrap/js/jquery-1.10.2.js"></script>
+        <script type="text/javascript" src="../css/bootstrap/js/bootstrap.min.js"></script>
+        <script>
+            $('.carousel').carousel({
+                interval: 5000 //changes the speed
+            })
+        </script>
+    </h:head>
+
+    <h:body>
+        <h:form>
+            <p:growl id="messages"/>
+            <p:menubar style="alignment-baseline: central"  >
+                <p:menuitem value="Página Inicial" url="../index.xhtml" icon="ui-icon-home" />
+                <p:menuitem value="Sobre" url="sobre.xhtml" icon="ui-icon-help" />
+                <p:menuitem value="Cadastre-se" url="cadastro.xhtml" icon="ui-icon-pencil" />
+                <p:menuitem value="Contatos" url="contato.xhtml" icon="ui-icon-contact" />
+                <p:menuitem value="Sustentabilidade" url="susten.xhtml" icon="ui-icon-newwin" />
+
+                <f:facet name="options">
+                    <p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
+                </f:facet>
+            </p:menubar>
+        </h:form>
+
+        <div id="myCarousel" class="carousel slide">
+
+            <!--		 Indicadores    -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Slides -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="fill"
+                         style="background-image: url('../images/bg4.png'); margin-top: 3%"></div>
+                    <div class="carousel-caption">
+                        <h1>Administração de Condomínio!</h1>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="fill"
+                         style="background-image: url('../images/dinheiro.jpg'); margin-top: 3%;"></div>
+                    <div class="carousel-caption">
+                        <h1>Melhor controle de Gastos e Despesas!</h1>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="fill"
+                         style="background-image: url('../images/verde.jpg'); margin-top: 3%; margin-bottom: 3%;"></div>
+                    <div class="carousel-caption">
+                        <h1>Programação especial para Coletas Seletivas</h1>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controles (BOTOES) -->
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="icon-prev"></span>
+            </a> <a class="right carousel-control" href="#myCarousel"
+                    data-slide="next"> <span class="icon-next"></span>
+            </a>
+        </div>
+        <div class="container">
+            <div class="container">
+                <div class="container">
+                    <div class="row section">
+                        <div class="col-lg-12">
+                            <div class="form-horizontal" >
+                                <div class="container">
+                                    <div class="row section">
+                                        <div class="col-lg-12" style="float: right">
+                                            <h3>Um Software para Gerenciar melhor seu Condomínio!</h3>
+                                            <p>
+                                                O Sistema Financeiro de Condomínio tem como finalidade facilitar a administracao do empreendimento.
+                                                <br/><br/>
+                                                Este novo sistema possibilita ao responsavel pela admiministracao, realizar o controle de toda a parte <br/>
+                                                financeira de modo mais agil e facilitado atraves de diversas funcoes que sao disponibilizadas para o usuario.
+                                                <br/><br/>
+                                                Com a utilizacao do sistema, o usuario sera capaz de gerar relatorios referente as despesas do condominio e <br/>
+                                                enviar os relatorios gerados para os moradores evitando o consumo e acumulo de papel.<br/>
+                                                <br/>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr/>
+                                <footer>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <p>Todos os Dieiros Reservados - 2014</p>
+                                        </div>
+                                    </div>
+                                </footer>
+                            </div>
+                            <!--/container-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </h:body>
+
+</html>

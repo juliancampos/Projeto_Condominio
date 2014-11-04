@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script>
+            $(document).ready(function() {
+                visible(true);
+            });
+        </script>
+    </head>
+    <body>
+        <br/><br/><br/><br/>
+        <div class="container">
+            <table cellpadding="0" cellspacing="0" border="0" class="table" id="dyntable">
+                <thead>
+                    <tr>
+                        <th >Valor Para o Condomínio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng:repeat="boleto in boletos"> 
+                        <td   >{{boleto.valorCondominio}}</td>
+                         <td   ng-if="valorApartamento != null">{{boleto.valorApartamento}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table cellpadding="0" cellspacing="0" border="0" class="table" id="dyntable">
+                <thead>
+                    <tr>
+                        <th >Valor Para o Bloco</th>
+                    </tr>
+                </thead>
+                <tbody  >
+                    <tr >
+                        <td data-ng-repeat="valorBloco in boletos" >{{valorBloco.valorBloco}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table cellpadding="0" cellspacing="0" border="0" class="table" id="dyntable">
+                <thead>
+                    <tr>
+                        <th >Valor Para os Apartamentos</th>
+                    </tr>
+                </thead>
+                <tbody  >
+                    <tr>
+                        <td ng:repeat="boleto in boletos">{{boleto.valorApartamento}}</td>
+                    </tr>
+                </tbody>
+            </table>
+             <table cellpadding="0" cellspacing="0" border="0" class="table" id="dyntable">
+                <thead>
+                    <tr>
+                        <th >Gerar</th>
+                    </tr>
+                </thead>
+                <tbody  >
+                    <tr>
+                        <td>
+                            <button class="btn btn-primary" ng-click="gerar(boleto)" id="btnSave" >Gerar Boletos</button>
+                        </td>
+                    </tr>
+                    </tbody>
+            </table>
+        </div>
+    </body>
+</html>
+                        <!--<td>{{boleto.valorApartamento}}</td>-->

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="description" content=""/>
+        <meta name="author" content="Daniel Lanna"/>
+
+        <title>:: ADM Cond ::</title>
+
+        <link href="../css/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+        <link href="../css/bootstrap/css/half-slider.css" rel="stylesheet"/>
+
+        <link rel="stylesheet" href="../css/validator/dist/css/bootstrapValidator.min.css"/>
+
+        <script src="../css/bootstrap/js/jquery-1.10.2.js"></script>
+        <script type="text/javascript" src="../css/bootstrap/js/bootstrap.min.js"></script>
+        <!-- Script que ativa o carrocel -->
+        <script>
+            $('.carousel').carousel({
+                interval: 5000 //changes the speed
+            })
+        </script>
+    </h:head>
+
+    <h:body>
+        <h:form>
+            <p:growl id="messages"/>
+            <p:menubar style="alignment-baseline: central"  >
+                <p:menuitem value="Página Inicial" url="../index.xhtml" icon="ui-icon-home" />
+                <p:menuitem value="Sobre" url="sobre.xhtml" icon="ui-icon-help" />
+                <p:menuitem value="Cadastre-se" url="cadastro.xhtml" icon="ui-icon-pencil" />
+                <p:menuitem value="Contatos" url="contato.xhtml" icon="ui-icon-contact" />
+                <p:menuitem value="Sustentabilidade" url="susten.xhtml" icon="ui-icon-newwin" />
+
+                <f:facet name="options">
+                    <p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
+                </f:facet>
+            </p:menubar>
+        </h:form>
+        <div id="myCarousel" class="carousel slide">
+
+            <!--		 Indicadores    -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Slides -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="fill"
+                         style="background-image: url('../images/bg4.png'); margin-top: 3%"></div>
+                    <div class="carousel-caption">
+                        <h1>Administração de Condomínio!</h1>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="fill"
+                         style="background-image: url('../images/dinheiro.jpg'); margin-top: 3%;"></div>
+                    <div class="carousel-caption">
+                        <h1>Melhor controle de Gastos e Despesas!</h1>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="fill"
+                         style="background-image: url('../images/verde.jpg'); margin-top: 3%; margin-bottom: 3%;"></div>
+                    <div class="carousel-caption">
+                        <h1>Programação especial para Coletas Seletivas</h1>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controles (BOTOES) -->
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="icon-prev"></span>
+            </a> <a class="right carousel-control" href="#myCarousel"
+                    data-slide="next"> <span class="icon-next"></span>
+            </a>
+        </div>
+        <div class="container">
+            <div class="container">
+                <div class="container">
+                    <div class="row section">
+                        <div class="col-lg-12">
+                            <div class="form-horizontal" >
+                                <br/>
+                                <div class="container">
+                                    <div class="row section">
+                                        <div class="col-lg-12" align="justify">
+                                            <div align="center">
+                                                <h4>
+                                                    Sustentabilidade<br/> </h4>
+                                                <br/>
+                                                À parte a briga entre São Paulo e Rio de Janeiro sobre quem tem direito ao uso das águas de um rio federal, ambos têm seus motivos para apoiar ou ser contra a mais essa transposição, porém, isso deve servir para mais reflexões sobre a nossa relação com o meio ambiente e as consequências de nossos atos.
+                                                É claro que o problema foi amplamente amenizado na tentativa de encobrir a negligência nas ações que mitigariam a questão, pois a meteorologia era clara, é só conta de mais e menos. Campanhas precoces de economia de consumo, redução e melhor tratamento de esgoto e recomposição de matas ciliares certamente dão mais trabalho do que o simples extrativismo da água, trazendo-a de cada vez mais longe.
+                                                Sim, o governo é negligente e não fez a parte dele, grande novidade essa, mas o que nós, cidadãos, estamos fazendo com esse recurso tão precioso?
+                                                Utilizamos os recursos naturais hoje como nunca visto antes, e não me refiro somente a água, inclui-se energia elétrica, combustíveis fósseis e renováveis, minérios, pesca etc. Em um padrão de vida garantido por recursos aparentemente infinitos.
+                                                A guerra pela água pode ser considerada uma prévia do que pode acontecer em um futuro próximo quando os recursos realmente não forem suficientes para todos e que prevalecerá o mais forte, certamente aquele que nunca se preocupou com isso, herança da ganância e egoismo.
+                                                Todas as nossas ações, mesmo as pequenas, deixam marcas no planeta, elas podem ser maiores ou menores. Aquelas ações que ficam dentro do limite em que o meio ambiente é capaz de compensar nós chamamos de ações sustentáveis, mas o real sentido dessa palavra tem se deturpado e transformado em um instrumento mercantil, pois ao invés de termos equipamentos que consomem menos a fim de reduzir a necessidade de energia, produzimos e vendemos mais produtos que somados consumirão tanto quanto ou mais do que antes.
+                                                Vamos refletir no que podemos fazer no nosso dia-a-dia:
+                                                Consumir menos água, as razões agora parecem obvias, além disso, cobrar a melhor gestão da água em seu estado e município, evitando desperdícios, vazamentos e o tratamento adequado do esgoto.
+                                                Mudança de hábitos de consumo, comprar somente o que realmente precisa e em mercados próximos de casa, sem o uso de carro, preferencialmente produzidos na região onde vive, incentivando o uso de mão-de-obra local e reduzindo as emissões geradas no transporte. Ao evitarmos comprar um produto produzido, por exemplo, na China, além de abdicar de todos esses benefícios, ainda estamos adquirindo um produto de um país cuja matriz energética é o carvão, grande gerador de CO2, causador do efeito estufa e do aquecimento global.
+                                                Priorizar transportes públicos ou alternativos, como a bicicleta.
+                                                As bicicletas elétricas precisam ser recarregadas na tomada e a energia elétrica no Brasil gerada por usinas hidrelétricas é só supostamente limpa. Está se lembrando de Belo Monte? Aquela usina que todos foram contra por inundar florestas, desalojar índios, assinaram petições, artistas na TV etc.? A construção de todas as usinas hidrelétricas existentes foi da mesma forma, a diferença é que você não estava lá para reivindicar… Vamos gastar menos, troquem as lâmpadas  tirem aparelhos da tomada, comprem equipamentos certificados com selo de eficiência energética etc.
+                                                Faça sua horta orgânica e colete água da chuva em tambores para regá-la, é fácil, barato e muito saudável.
+                                                Por fim, reutilize, conserte o que está quebrado, não tome tudo como descartável.
+
+                                                Pense, reflita, faça a sua parte. Ações simples, menos impacto, garantia de vida às próximas gerações.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <hr/>
+                            <footer>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <p>Todos os Dieiros Reservados - 2014</p>
+                                    </div>
+                                </div>
+                            </footer>
+                        </div>
+                        <!--/container-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </h:body>
+</html>

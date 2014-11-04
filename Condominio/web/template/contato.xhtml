@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="description" content=""/>
+        <meta name="author" content="Daniel Lanna"/>
+
+        <title>:: ADM Cond ::</title>
+
+        <link href="../css/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+        <link href="../css/bootstrap/css/half-slider.css" rel="stylesheet"/>
+
+        <link rel="stylesheet" href="../css/validator/dist/css/bootstrapValidator.min.css"/>
+
+        <script src="../css/bootstrap/js/jquery-1.10.2.js"></script>
+        <script type="text/javascript" src="../css/bootstrap/js/bootstrap.min.js"></script>
+        <script>
+            $('.carousel').carousel({
+                interval: 5000 //changes the speed
+            })
+        </script>
+    </h:head>
+
+    <h:body>
+        <h:form>
+            <p:growl id="messages"/>
+            <p:menubar style="alignment-baseline: central"  >
+                <p:menuitem value="Página Inicial" url="../index.xhtml" icon="ui-icon-home" />
+                <p:menuitem value="Sobre" url="sobre.xhtml" icon="ui-icon-help" />
+                <p:menuitem value="Cadastre-se" url="cadastro.xhtml" icon="ui-icon-pencil" />
+                <p:menuitem value="Contatos" url="contato.xhtml" icon="ui-icon-contact" />
+                <p:menuitem value="Sustentabilidade" url="susten.xhtml" icon="ui-icon-newwin" />
+
+                <f:facet name="options">
+                    <p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
+                </f:facet>
+            </p:menubar>
+        </h:form>
+
+        <div id="myCarousel" class="carousel slide">
+
+            <!--		 Indicadores    -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Slides -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="fill"
+                         style="background-image: url('../images/bg4.png'); margin-top: 3%"></div>
+                    <div class="carousel-caption">
+                        <h1>Administração de Condomínio!</h1>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="fill"
+                         style="background-image: url('../images/dinheiro.jpg'); margin-top: 3%;"></div>
+                    <div class="carousel-caption">
+                        <h1>Melhor controle de Gastos e Despesas!</h1>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="fill"
+                         style="background-image: url('../images/verde.jpg'); margin-top: 3%; margin-bottom: 3%;"></div>
+                    <div class="carousel-caption">
+                        <h1>Programação especial para Coletas Seletivas</h1>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controles (BOTOES) -->
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="icon-prev"></span>
+            </a> <a class="right carousel-control" href="#myCarousel"
+                    data-slide="next"> <span class="icon-next"></span>
+            </a>
+        </div>
+    <div class="container">
+        <div class="container">
+            <div class="container">
+                <div class="row section">
+                    <div class="col-lg-12">
+                        <div class="form-horizontal" >
+                            <div class="container">
+                                <div class="row section">
+                                    <div class="col-lg-12">
+                                        <div class="form-horizontal">
+                                            <table class="modal-body ">
+                                                <tr>
+                                                    <td  align="center">
+                                                        <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.br/maps?f=q&amp;source=s_q&amp;hl=pt-BR&amp;geocode=&amp;q=Rua+dos+Goitacazes,+1168,+Barro+Preto,+Minas+Gerais&amp;aq=&amp;sll=-19.920916,-43.946106&amp;sspn=0.006889,0.012392&amp;t=h&amp;ie=UTF8&amp;hq=&amp;hnear=Rua+dos+Goitacazes,+1168+-+Centro,+Minas+Gerais,+30190-051&amp;ll=-19.920916,-43.946106&amp;spn=0.006889,0.012392&amp;z=14&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com.br/maps?f=q&amp;source=embed&amp;hl=pt-BR&amp;geocode=&amp;q=Rua+dos+Goitacazes,+1168,+Barro+Preto,+Minas+Gerais&amp;aq=&amp;sll=-19.920916,-43.946106&amp;sspn=0.006889,0.012392&amp;t=h&amp;ie=UTF8&amp;hq=&amp;hnear=Rua+dos+Goitacazes,+1168+-+Centro,+Minas+Gerais,+30190-051&amp;ll=-19.920916,-43.946106&amp;spn=0.006889,0.012392&amp;z=14" style="color:#0000FF;text-align:left"><h3>Exibir mapa ampliado</h3></a></small>
+                                                    </td>
+                                                    <td align="center" >
+                                                        <div class="row section">
+                                                            <div class="col-lg-12">
+                                                                <h3 align="center">Contatos</h3>
+                                                                <p>
+                                                                    Estamos localizados na Rua dod Goitacazes n 1168, barro preto, Belo Horizonte - MG,
+                                                                    <br/>
+                                                                    CEP: 30190-051 ‎
+                                                                    <br/>
+                                                                    Email para contato: <br/>
+                                                                    contato@admdecond.com.br.
+                                                                    <br/><br/>
+                                                                    Para mais informações acesse: <br/>
+                                                                    <a href="#/sobre">Sobre Nós</a><br/>
+                                                                    <br/>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div></div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <footer>
+        <div class="row">
+            <div class="col-lg-12">
+                <p>Todos os Dieiros Reservados - 2014</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- /container -->
+    </h:body>
+
+</html>

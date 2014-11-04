@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+    
+    <persistence-unit name="bloco">
+        <!-- provedor/implementacao do JPA -->
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+
+        <!-- entidade mapeada -->
+        <class>com.una.adm.model.Bloco</class>
+
+        <properties>
+            <!-- dados da conexao -->
+            <property name="javax.persistence.jdbc.driver"
+                      value="com.mysql.jdbc.Driver" />
+            <property name="javax.persistence.jdbc.url"
+                      value="jdbc:mysql://localhost/db_condominio" />
+            <property name="javax.persistence.jdbc.user"
+                      value="root" />
+            <property name="javax.persistence.jdbc.password"
+                      value="admin" />
+
+            <!--  propriedades do hibernate -->
+            <property name="hibernate.dialect"
+                      value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.format_sql" value="true" />
+
+            <!--  atualiza o banco, gera as tabelas se for preciso -->
+            <property name="hibernate.hbm2ddl.auto" value="update" />
+
+        </properties>
+    </persistence-unit>
+
+    <persistence-unit name="apartamento">
+        <!-- provedor/implementacao do JPA -->
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+
+        <!-- entidade mapeada -->
+        <class>com.una.adm.model.Apartamento</class>
+
+        <properties>
+            <!-- dados da conexao -->
+            <property name="javax.persistence.jdbc.driver"
+                      value="com.mysql.jdbc.Driver" />
+            <property name="javax.persistence.jdbc.url"
+                      value="jdbc:mysql://localhost/db_condominio" />
+            <property name="javax.persistence.jdbc.user"
+                      value="root" />
+            <property name="javax.persistence.jdbc.password"
+                      value="admin" />
+
+            <!--  propriedades do hibernate -->
+            <property name="hibernate.dialect"
+                      value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.format_sql" value="true" />
+
+            <!--  atualiza o banco, gera as tabelas se for preciso -->
+            <property name="hibernate.hbm2ddl.auto" value="update" />
+
+        </properties>
+    </persistence-unit>
+
+    <persistence-unit name="condominio">
+        <!-- provedor/implementacao do JPA -->
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+
+        <!-- entidade mapeada -->
+        <class>com.una.adm.model.Condominio</class>
+
+        <properties>
+            <!-- dados da conexao -->
+            <property name="javax.persistence.jdbc.driver"
+                      value="com.mysql.jdbc.Driver" />
+            <property name="javax.persistence.jdbc.url"
+                      value="jdbc:mysql://localhost/db_condominio" />
+            <property name="javax.persistence.jdbc.user"
+                      value="root" />
+            <property name="javax.persistence.jdbc.password"
+                      value="admin" />
+
+            <!--  propriedades do hibernate -->
+            <property name="hibernate.dialect"
+                      value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.format_sql" value="true" />
+
+            <!--  atualiza o banco, gera as tabelas se for preciso -->
+            <property name="hibernate.hbm2ddl.auto" value="update" />
+
+        </properties>
+    </persistence-unit>
+
+    <persistence-unit name="despesa">
+        <!-- provedor/implementacao do JPA -->
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+
+        <!-- entidade mapeada -->
+        <class>com.una.adm.model.Despesa</class>
+
+        <properties>
+            <!-- dados da conexao -->
+            <property name="javax.persistence.jdbc.driver"
+                      value="com.mysql.jdbc.Driver" />
+            <property name="javax.persistence.jdbc.url"
+                      value="jdbc:mysql://localhost/db_condominio" />
+            <property name="javax.persistence.jdbc.user"
+                      value="root" />
+            <property name="javax.persistence.jdbc.password"
+                      value="admin" />
+
+            <!--  propriedades do hibernate -->
+            <property name="hibernate.dialect"
+                      value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.format_sql" value="true" />
+
+            <!--  atualiza o banco, gera as tabelas se for preciso -->
+            <property name="hibernate.hbm2ddl.auto" value="update" />
+
+        </properties>
+    </persistence-unit>
+
+    <persistence-unit name="usuario">
+        <!-- provedor/implementacao do JPA -->
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+
+        <!-- entidade mapeada -->
+        <class>com.una.adm.model.Usuario</class>
+
+        <properties>
+            <!-- dados da conexao -->
+            <property name="javax.persistence.jdbc.driver"
+                      value="com.mysql.jdbc.Driver" />
+            <property name="javax.persistence.jdbc.url"
+                      value="jdbc:mysql://localhost/db_condominio" />
+            <property name="javax.persistence.jdbc.user"
+                      value="root" />
+            <property name="javax.persistence.jdbc.password"
+                      value="admin" />
+
+            <!--  propriedades do hibernate -->
+            <property name="hibernate.dialect"
+                      value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.format_sql" value="true" />
+
+            <!--  atualiza o banco, gera as tabelas se for preciso -->
+            <property name="hibernate.hbm2ddl.auto" value="update" />
+
+        </properties>
+    </persistence-unit>
+    
+    <persistence-unit name="proprietario">
+        <!-- provedor/implementacao do JPA -->
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+
+        <!-- entidade mapeada -->
+        <class>com.una.adm.model.Proprietario</class>
+
+        <properties>
+            <!-- dados da conexao -->
+            <property name="javax.persistence.jdbc.driver"
+                      value="com.mysql.jdbc.Driver" />
+            <property name="javax.persistence.jdbc.url"
+                      value="jdbc:mysql://localhost/db_condominio" />
+            <property name="javax.persistence.jdbc.user"
+                      value="root" />
+            <property name="javax.persistence.jdbc.password"
+                      value="admin" />
+
+            <!--  propriedades do hibernate -->
+            <property name="hibernate.dialect"
+                      value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.format_sql" value="true" />
+
+            <!--  atualiza o banco, gera as tabelas se for preciso -->
+            <property name="hibernate.hbm2ddl.auto" value="update" />
+
+        </properties>
+    </persistence-unit>
+    <persistence-unit name="evento">
+        <!-- provedor/implementacao do JPA -->
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+
+        <!-- entidade mapeada -->
+        <class>com.una.adm.model.EventoMobile</class>
+
+        <properties>
+            <!-- dados da conexao -->
+            <property name="javax.persistence.jdbc.driver"
+                      value="com.mysql.jdbc.Driver" />
+            <property name="javax.persistence.jdbc.url"
+                      value="jdbc:mysql://localhost/db_condominio" />
+            <property name="javax.persistence.jdbc.user"
+                      value="root" />
+            <property name="javax.persistence.jdbc.password"
+                      value="admin" />
+
+            <!--  propriedades do hibernate -->
+            <property name="hibernate.dialect"
+                      value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.format_sql" value="true" />
+
+            <!--  atualiza o banco, gera as tabelas se for preciso -->
+            <property name="hibernate.hbm2ddl.auto" value="update" />
+
+        </properties>
+    </persistence-unit>
+    
+</persistence>

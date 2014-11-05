@@ -20,8 +20,8 @@ public class ApartamentoFacade {
         apartamentoDAO.incluirApartamento(apartamento);
     }
 
-    public void excluir(int id) {
-        apartamentoDAO.excluir(id);
+    public void excluir(Apartamento apartamento) {
+        apartamentoDAO.excluir(apartamento);
     }
 
     public void alterar(Apartamento apartamento) {

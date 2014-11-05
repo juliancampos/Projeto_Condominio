@@ -18,43 +18,48 @@ import org.hibernate.Session;
  */
 public class EventoDAO {
 
-    Session session = getSession();
-
     public void incluir(EventoMobile pEventoMobile) {
-        session.beginTransaction();
+        Session session = getSession();
         try {
             session.persist(pEventoMobile);
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
             e.printStackTrace();
+        } finally {
+            session.close();
         }
     }
 
     public void excluir(EventoMobile pEventoMobile) {
-        session.beginTransaction();
+        Session session = getSession();
         try {
             session.delete(pEventoMobile);
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
             e.printStackTrace();
+        } finally {
+            session.close();
         }
 
     }
 
     public void alterar(EventoMobile pEventoMobile) {
-        session.beginTransaction();
+        Session session = getSession();
         try {
             session.merge(pEventoMobile);
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
             e.printStackTrace();
+        } finally {
+            session.close();
         }
     }
 
     public EventoMobile obterEvento(Long id) {
+        Session session = getSession();
         EventoMobile lEventoMobile = new EventoMobile();
         Query query = session.createQuery("from EventoMobile event where event.idEvento = :lId");
         query.setParameter("lId", id);
@@ -62,11 +67,14 @@ public class EventoDAO {
             lEventoMobile = (EventoMobile) query.uniqueResult();
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            session.close();
         }
         return lEventoMobile;
     }
 
     public Collection<EventoMobile> obterEventosProprietario(EventoMobile pEventoMobile) {
+        Session session = getSession();
         Collection<EventoMobile> lEventos = new ArrayList<EventoMobile>();
         Query query = session.createQuery("from EventoMobile event where event.proprietario.id = :lIdProp");
         query.setParameter("lIdProp", pEventoMobile.getProprietario().getId());
@@ -74,11 +82,14 @@ public class EventoDAO {
             lEventos = query.list();
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            session.close();
         }
         return lEventos;
     }
 
     public Collection<EventoMobile> obterEventosCondominio(EventoMobile pEventoMobile) {
+        Session session = getSession();
         Collection<EventoMobile> lEventos = new ArrayList<EventoMobile>();
         Query query = session.createQuery("from EventoMobile event where event.condominio.idCond = :lIdCond");
         query.setParameter("lIdCond", pEventoMobile.getCondominio().getIdCond());
@@ -86,6 +97,8 @@ public class EventoDAO {
             lEventos = query.list();
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            session.close();
         }
         return lEventos;
     }

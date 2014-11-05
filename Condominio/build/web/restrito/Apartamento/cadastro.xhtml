@@ -45,6 +45,7 @@
                 <div class="row section">
                     <div class="col-lg-12" align="center" >
                         <br/>
+                                <p:growl id="growl" sticky="true" showDetail="true" life="3000"  autoUpdate="true"/>
                         <p:panel>
                             <p:ajaxStatus onstart="PF('statusDialog').show()" oncomplete="PF('statusDialog').hide()" />
                             <p:dialog  header="Values" resizable="false" position="center" widgetVar="statusDialog" modal="true" draggable="false" closable="false" showHeader="false" >
@@ -53,7 +54,6 @@
                                 </p:graphicImage>
                             </p:dialog>
                             <h:form id="formCad">
-                                <p:growl id="growl" sticky="true" showDetail="true" life="3000"  autoUpdate="true"/>
                                 <p:panel>
                                     <p:panelGrid columns="2">
                                     <p:outputLabel value="Escolha o Bloco:" />  
@@ -86,7 +86,7 @@
                                     </p:panelGrid>
                                 </p:panel>
                                 <br/>
-                                <p:commandButton action="#{apartamento.salvar}" value="Salvar"  update="@form,:formList"/>
+                                <p:commandButton action="#{apartamento.salvar}" value="Salvar"  update=":formCad,:formList"/>
                             </h:form>
                         </p:panel>
                         <br/>
@@ -108,9 +108,9 @@
                                     </p:column>
                                     <p:column headerText="Ações" width="110" style="text-align: center">
                                         <p:commandButton icon="ui-icon-pencil" action="#{apartamento.editar(apt)}" title="Editar"  update=":formCad">
-                                            <p:confirm header="Confirmation" message="Tem Certeza que deseja Editar o Condomínio?" icon="ui-icon-alert" />
+                                            <p:confirm header="Confirmação" message="Tem Certeza que deseja Editar o Condomínio?" icon="ui-icon-alert" />
                                         </p:commandButton>
-                                        <p:commandButton icon="ui-icon-closethick" action="#{apartamento.excluir(apt)}" title="Excluir"  update="@form,:formList">
+                                        <p:commandButton icon="ui-icon-closethick" action="#{apartamento.excluir(apt)}" title="Excluir"  >
                                             <p:confirm header="Confirmação" message="Tem Certeza que deseja Exluir o Condomínio?" icon="ui-icon-alert" />
                                         </p:commandButton>
                                     </p:column>

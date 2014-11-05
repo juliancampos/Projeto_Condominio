@@ -7,8 +7,6 @@ package com.una.adm.model.DAO;
 import com.una.adm.model.Condominio;
 import static com.una.adm.model.DAO.DAO.getSession;
 import com.una.adm.model.Usuario;
-import java.util.ArrayList;
-import java.util.Collection;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -18,10 +16,8 @@ import org.hibernate.Session;
  */
 public class CondominioDAO extends DAO {
 
-    Session session = getSession();
-
     public void incluir(Condominio pCondominio, Usuario pUsuario) {
-        session.beginTransaction();
+        Session session = getSession();
         try {
             session.persist(pCondominio);
             session.getTransaction().commit();
@@ -31,11 +27,13 @@ public class CondominioDAO extends DAO {
         } catch (Exception e) {
             session.getTransaction().rollback();
             e.printStackTrace();
+        } finally {
+            session.close();
         }
     }
 
     public void excluir(int id) {
-        session.beginTransaction();
+        Session session = getSession();
         try {
             Query query = session.createQuery("DELETE from Condominio cond where cond.idCond = :lId");
             query.setParameter("lId", id);
@@ -44,22 +42,27 @@ public class CondominioDAO extends DAO {
         } catch (Exception e) {
             session.getTransaction().rollback();
             e.printStackTrace();
+        } finally {
+            session.close();
         }
 
     }
 
     public void alterar(Condominio pCondominio) {
-        session.beginTransaction();
+        Session session = getSession();
         try {
             session.merge(pCondominio);
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
             e.printStackTrace();
+        } finally {
+            session.close();
         }
     }
 
     public Condominio obter(int id) {
+        Session session = getSession();
         Condominio lCondominio = new Condominio();
         Query query = session.createQuery("from Condominio cond where cond.idCond = :lId");
         query.setParameter("lId", id);
@@ -67,23 +70,14 @@ public class CondominioDAO extends DAO {
             lCondominio = (Condominio) query.uniqueResult();
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            session.close();
         }
         return lCondominio;
     }
 
-    public Condominio obterPorUsuario(Long id) {
-        int i = 0;
-        Condominio cond = new Condominio();
-
-        return cond;
-    }
-
-    public Collection<Condominio> obterTodos() {
-        Collection<Condominio> lCondominios = new ArrayList<Condominio>();
-        return lCondominios;
-    }
-
     public Condominio obterCondminioPorNome(Condominio pCond) {
+        Session session = getSession();
         if (!session.isOpen()) {
             session = getSession();
         }
@@ -94,6 +88,8 @@ public class CondominioDAO extends DAO {
             lCond = (Condominio) query.uniqueResult();
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            session.close();
         }
         return lCond;
     }

@@ -211,7 +211,7 @@ public class ApartamentoMB implements Serializable {
     public void excluir(Apartamento pApart) throws Exception {
         FacesMessage message = null;
         try {
-            facadeApartamento.excluir(pApart.getIdApart());
+            facadeApartamento.excluir(pApart);
             message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Apartamento Excluído com Sucesso!", obsApart);
             FacesContext.getCurrentInstance().addMessage("Deu Certo!", message);
         } catch (Exception ex) {

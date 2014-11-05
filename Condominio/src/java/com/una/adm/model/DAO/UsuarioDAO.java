@@ -2,8 +2,6 @@ package com.una.adm.model.DAO;
 
 import static com.una.adm.model.DAO.DAO.getSession;
 import com.una.adm.model.Usuario;
-import java.util.ArrayList;
-import java.util.Collection;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -13,33 +11,36 @@ import org.hibernate.Session;
  */
 public class UsuarioDAO extends DAO {
 
-    Session session = getSession();
-
     public void incluirUsuario(Usuario pUsuario) {
-        session.beginTransaction();
+        Session session = getSession();
         try {
             session.persist(pUsuario);
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
             e.printStackTrace();
+        } finally {
+            session.close();
         }
 
     }
 
     public void excluir(Long id) {
-        session.getTransaction().begin();
+        Session session = getSession();
         try {
             session.delete(id);
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
             e.printStackTrace();
+        } finally {
+            session.close();
         }
 
     }
 
     public void alterar(Usuario pUsuario, boolean isComitar) {
+        Session session = getSession();
         try {
             if (isComitar) {
                 session.merge(pUsuario);
@@ -51,11 +52,14 @@ public class UsuarioDAO extends DAO {
         } catch (Exception e) {
             session.getTransaction().rollback();
             e.printStackTrace();
+        } finally {
+            session.close();
         }
 
     }
 
     public Usuario obter(Long id) {
+        Session session = getSession();
         Usuario lUsuario = new Usuario();
         Query query = session.createQuery("from Condominio cond where cond.idCond = :lId");
         query.setParameter("lnome", id);
@@ -63,29 +67,14 @@ public class UsuarioDAO extends DAO {
             lUsuario = (Usuario) query.uniqueResult();
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            session.close();
         }
         return lUsuario;
     }
 
-    public Usuario obterPorUsuario(Long id) {
-        int i = 0;
-        Usuario bloc = new Usuario();
-
-        String sql = "select * from usuario where idUsuario = " + id;
-        return bloc;
-    }
-
-    public Collection<Usuario> obterTodos() {
-        Collection<Usuario> lUsuario = new ArrayList<Usuario>();
-        return lUsuario;
-    }
-
-    public Collection<Usuario> obterUsuariosPorIdCond(Usuario pusuario) {
-        Collection<Usuario> lUsuario = new ArrayList<Usuario>();
-        return lUsuario;
-    }
-
     public Usuario obterUsuarioLogin(Usuario usu) throws Exception {
+        Session session = getSession();
         Usuario lUsu = new Usuario();
         Query query = session.createQuery("from Usuario us where us.email = :lemail and senha = :lsenha");
         query.setParameter("lemail", usu.getEmail());
@@ -94,12 +83,15 @@ public class UsuarioDAO extends DAO {
             lUsu = (Usuario) query.uniqueResult();
         } catch (Exception e) {
             throw new Exception();
+        } finally {
+            session.close();
         }
         return lUsu;
 
     }
 
     public Usuario obterUsuarioLogado(Usuario usu) {
+        Session session = getSession();
         Usuario lUsu = new Usuario();
         Query query = session.createQuery("from Usuario us where us.email = :lemail");
         query.setParameter("lemail", usu.getEmail());
@@ -107,6 +99,8 @@ public class UsuarioDAO extends DAO {
             lUsu = (Usuario) query.uniqueResult();
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            session.close();
         }
         return lUsu;
     }

@@ -34,8 +34,4 @@ public class CondominioFacade {
     public Condominio obter(int id, Usuario pUsu, HttpServletRequest request) {
         return condominioRN.obter(id, pUsu, request);
     }
-
-    public Condominio obterPorUsuario(Long id, Usuario pUsu, HttpServletRequest request) {
-        return condominioRN.obterPorUsuario(id, pUsu, request);
-    }
 }

@@ -156,7 +156,7 @@ public class ControllerApartamento {
     public Response excluirApartamento(@PathParam("id") int id) {
         try {
             String json = "{}";
-            facadeApartamento.excluir(id);
+//            facadeApartamento.excluir(id);
             return Response.status(Response.Status.OK).entity(json).build();
         } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
@@ -171,7 +171,7 @@ public class ControllerApartamento {
             String idApart = info.getQueryParameters().getFirst("idApart");
             int id = Integer.valueOf(idApart);
             String json = "{}";
-            facadeApartamento.excluir(id);
+//            facadeApartamento.excluir(id);
             return Response.status(Response.Status.OK).entity(json).build();
         } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)

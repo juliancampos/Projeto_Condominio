@@ -18,21 +18,21 @@ import org.hibernate.Session;
  */
 public class BlocoDAO extends DAO {
 
-    Session session = getSession();
-
     public void incluirBloco(Bloco pBloco) {
-        session.beginTransaction();
+        Session session = getSession();
         try {
             session.persist(pBloco);
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
             e.printStackTrace();
+        } finally {
+            session.close();
         }
     }
 
     public void excluir(Long id) {
-        session.beginTransaction();
+        Session session = getSession();
         try {
             Query query = session.createQuery("DELETE from Bloco bloco where bloco.idBloco = :lId");
             query.setParameter("lId", id);
@@ -41,12 +41,14 @@ public class BlocoDAO extends DAO {
         } catch (Exception e) {
             session.getTransaction().rollback();
             e.printStackTrace();
+        } finally {
+            session.close();
         }
 
     }
 
     public void alterar(Bloco pBloco) {
-        session.beginTransaction();
+        Session session = getSession();
         try {
             Query query = session.createQuery("update Bloco bloco set bloco.NomeBloco = :lNome, bloco.obsBloco = :lObs where bloco.idBloco = :lId");
             query.setParameter("lNome", pBloco.getNomeBloco());
@@ -57,11 +59,14 @@ public class BlocoDAO extends DAO {
         } catch (Exception e) {
             session.getTransaction().rollback();
             e.printStackTrace();
+        } finally {
+            session.close();
         }
 
     }
 
     public Bloco obter(Long id) {
+        Session session = getSession();
         Bloco lBloco = new Bloco();
         Query query = session.createQuery("from Bloco bloco where bloco.idBloco = :lId");
         query.setParameter("lId", id);
@@ -69,11 +74,14 @@ public class BlocoDAO extends DAO {
             lBloco = (Bloco) query.uniqueResult();
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            session.close();
         }
         return lBloco;
     }
 
     public Collection<Bloco> obterTodos(int idCond) {
+        Session session = getSession();
         List<Bloco> lCollBlocos = new ArrayList<Bloco>();
         Query query = session.createQuery("From Bloco bloco  where bloco.condominio.idCond = :IdCo");
         query.setParameter("IdCo", idCond);
@@ -81,11 +89,14 @@ public class BlocoDAO extends DAO {
             lCollBlocos = query.list();
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            session.close();
         }
         return lCollBlocos;
     }
 
     public Collection<Bloco> obterBlocosPorIdCond(Bloco pbloco) {
+        Session session = getSession();
         List<Bloco> lCollBlocos = new ArrayList<Bloco>();
         try {
             Query query = session.createQuery("from Bloco bloco where bloco.condominio = :IdCo");
@@ -93,6 +104,8 @@ public class BlocoDAO extends DAO {
             lCollBlocos = query.list();
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            session.close();
         }
         return lCollBlocos;
     }

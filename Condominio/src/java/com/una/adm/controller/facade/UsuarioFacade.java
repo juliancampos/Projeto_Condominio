@@ -1,9 +1,8 @@
 package com.una.adm.controller.facade;
 
 import com.una.adm.controller.RN.UsuarioRN;
-import com.una.adm.model.Usuario;
 import com.una.adm.model.DAO.UsuarioDAO;
-import java.util.Collection;
+import com.una.adm.model.Usuario;
 
 /**
  *
@@ -24,10 +23,6 @@ public class UsuarioFacade {
 
     public Usuario obter(int id) {
         return usuarioDAO.obter(Long.valueOf(id));
-    }
-
-    public Collection<Usuario> obterTodos() {
-        return usuarioDAO.obterTodos();
     }
 
     public Usuario obterUsuarioLogin(Usuario usuario) throws Exception {

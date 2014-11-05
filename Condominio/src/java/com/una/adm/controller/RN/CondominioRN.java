@@ -59,8 +59,4 @@ public class CondominioRN {
         }
         return null;
     }
-
-    public Condominio obterPorUsuario(Long id, Usuario pUsu, HttpServletRequest request) {
-        return condominioDAO.obterPorUsuario(id);
-    }
 }

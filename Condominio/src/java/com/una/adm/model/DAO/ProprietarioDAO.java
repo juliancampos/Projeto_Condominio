@@ -18,21 +18,21 @@ import org.hibernate.Session;
  */
 public class ProprietarioDAO {
 
-    Session session = getSession();
-
     public void incluirProprietario(Proprietario pProprietario) {
-        session.beginTransaction();
+        Session session = getSession();
         try {
             session.merge(pProprietario);
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
             e.printStackTrace();
+        } finally {
+            session.close();
         }
     }
 
     public void excluir(Long id) {
-        session.beginTransaction();
+        Session session = getSession();
         try {
             Query query = session.createQuery("DELETE from Proprietario proprietario where proprietario.id = :lId");
             query.setParameter("lId", id);
@@ -41,23 +41,28 @@ public class ProprietarioDAO {
         } catch (Exception e) {
             session.getTransaction().rollback();
             e.printStackTrace();
+        } finally {
+            session.close();
         }
 
     }
 
     public void alterar(Proprietario pProprietario) {
-        session.beginTransaction();
+        Session session = getSession();
         try {
             session.merge(pProprietario);
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
             e.printStackTrace();
+        } finally {
+            session.close();
         }
 
     }
 
     public Proprietario obter(Long id) {
+        Session session = getSession();
         Proprietario lProprietario = new Proprietario();
         Query query = session.createQuery("from Proprietario proprietario where proprietario.id = :lId");
         query.setParameter("lId", id);
@@ -65,11 +70,14 @@ public class ProprietarioDAO {
             lProprietario = (Proprietario) query.uniqueResult();
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            session.close();
         }
         return lProprietario;
     }
 
     public Collection<Proprietario> obterTodos(int idCond) {
+        Session session = getSession();
         List<Proprietario> lCollProprietarios = new ArrayList<Proprietario>();
         Query query = session.createQuery("from Proprietario prop where prop.condominio.idCond = :IdCo");
         query.setParameter("IdCo", idCond);
@@ -77,11 +85,14 @@ public class ProprietarioDAO {
             lCollProprietarios = query.list();
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            session.close();
         }
         return lCollProprietarios;
     }
 
     public Proprietario obterProprietarioMobile(String cpf) {
+        Session session = getSession();
         Proprietario lProprietario = new Proprietario();
         Query query = session.createQuery("from Proprietario proprietario where proprietario.cpf = :cpf");
         query.setParameter("cpf", cpf);
@@ -89,6 +100,8 @@ public class ProprietarioDAO {
             lProprietario = (Proprietario) query.uniqueResult();
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            session.close();
         }
         return lProprietario;
     }

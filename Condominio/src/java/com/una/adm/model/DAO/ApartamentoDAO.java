@@ -18,45 +18,49 @@ import org.hibernate.Session;
  */
 public class ApartamentoDAO extends DAO {
 
-    Session session = getSession();
-
     public void incluirApartamento(Apartamento pApartamento) {
-        session.beginTransaction();
+        Session session = getSession();
         try {
             session.persist(pApartamento);
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
             e.printStackTrace();
+        } finally {
+            session.close();
         }
     }
 
-    public void excluir(int id) {
-        session.beginTransaction();
+    public void excluir(Apartamento ap) {
+        Session session = getSession();
         try {
-            Apartamento ap = obter(id);
             session.delete(ap);
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
             e.printStackTrace();
+        } finally {
+            session.close();
         }
 
     }
 
     public void alterar(Apartamento pApartamento) {
-        session.beginTransaction();
+        Session session = getSession();
         try {
             session.merge(pApartamento);
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
             e.printStackTrace();
+        } finally {
+            session.close();
         }
 
     }
 
     public Apartamento obter(int id) {
+        Session session = getSession();
         Apartamento lApartamento = new Apartamento();
         Query query = session.createQuery("from Apartamento apartamento where apartamento.idApart = :lId");
         query.setParameter("lId", id);
@@ -64,11 +68,14 @@ public class ApartamentoDAO extends DAO {
             lApartamento = (Apartamento) query.uniqueResult();
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            session.close();
         }
         return lApartamento;
     }
 
     public Collection<Apartamento> obterTodos(int idCond) {
+        Session session = getSession();
         List<Apartamento> lCollApartamentos = new ArrayList<Apartamento>();
         Query query = session.createQuery("from Apartamento apartamento where apartamento.bloco.condominio.idCond = :IdCo");
         query.setParameter("IdCo", idCond);
@@ -76,22 +83,28 @@ public class ApartamentoDAO extends DAO {
             lCollApartamentos = query.list();
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            session.close();
         }
         return lCollApartamentos;
     }
 
     public Apartamento obterApartamentoPorCPF(Apartamento pApartamento) {
+        Session session = getSession();
         Apartamento lApartamento = new Apartamento();
         Query query = session.createQuery("from Apartamento apartamento where apartamento.cpfApart = :lCpf");
         try {
             lApartamento = (Apartamento) query.uniqueResult();
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            session.close();
         }
         return lApartamento;
     }
 
     public void inserirBlocoApartamento(Apartamento pApartamento) {
+        Session session = getSession();
         try {
             Query query = session.createQuery("UPDATE Apartamento apartamento set  id_bloco = :liDBloco where idApart = :IdApart");
             query.setParameter("liDBloco", pApartamento.getBloco().getIdBloco());
@@ -100,6 +113,8 @@ public class ApartamentoDAO extends DAO {
         } catch (Exception e) {
             session.getTransaction().rollback();
             e.printStackTrace();
+        } finally {
+            session.close();
         }
     }
 }

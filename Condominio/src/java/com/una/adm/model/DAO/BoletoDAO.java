@@ -4,8 +4,6 @@ import com.una.adm.model.Apartamento;
 import com.una.adm.model.Bloco;
 import com.una.adm.model.Condominio;
 import static com.una.adm.model.DAO.DAO.getSession;
-import java.math.BigDecimal;
-import java.text.NumberFormat;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -15,7 +13,6 @@ import org.hibernate.Session;
  */
 public class BoletoDAO {
 
-    Session session = getSession();
     public static Query query;
 
     public static void main(String[] args) {
@@ -32,6 +29,7 @@ public class BoletoDAO {
     }
 
     public Double obterValorPorCondominio(Condominio pCondominio) {
+        Session session = getSession();
         Double valorTotal = 0D;
         try {
             Query query = session.createSQLQuery("select sum(valor) from despesa where tipo = 1 and condominio_id = :lIdCond");
@@ -39,11 +37,14 @@ public class BoletoDAO {
             valorTotal = (Double) query.uniqueResult();
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            session.close();
         }
         return valorTotal;
     }
 
     public Double obterValorPorBloco(Condominio pCondominio, Bloco pBloco) {
+        Session session = getSession();
         Double valorTotal = 0D;
         try {
             Query query = session.createSQLQuery("select sum(valor) / (select count(id) from proprietario where proprietario.bloco_id = :lBloco) \n"
@@ -53,11 +54,14 @@ public class BoletoDAO {
             valorTotal = (Double) query.uniqueResult();
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            session.close();
         }
         return valorTotal;
     }
 
     public Double obterValorPorApartamento(Condominio pCondominio, Apartamento pApartamento) {
+        Session session = getSession();
         Double valorTotal = 0D;
         try {
             Query query = session.createSQLQuery("select sum(valor) from despesa where tipo = 3 and apartamento_id = :lIdApart and condominio_id = :lIdCond");
@@ -66,12 +70,15 @@ public class BoletoDAO {
             valorTotal = (Double) query.uniqueResult();
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            session.close();
         }
         return valorTotal;
     }
-    
+
     public Double obterApartamento(Condominio pCondominio, Apartamento pApartamento) {
         Double valorTotal = 0D;
+        Session session = getSession();
         try {
             Query query = session.createSQLQuery("select apartamento_id from despesa where tipo = 3 and apartamento_id = :lIdApart and condominio_id = :lIdCond");
             query.setParameter("lIdApart", pApartamento.getIdApart());
@@ -79,6 +86,8 @@ public class BoletoDAO {
             valorTotal = (Double) query.uniqueResult();
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            session.close();
         }
         return valorTotal;
     }

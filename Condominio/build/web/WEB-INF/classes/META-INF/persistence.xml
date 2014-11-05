@@ -18,7 +18,7 @@
             <property name="javax.persistence.jdbc.user"
                       value="root" />
             <property name="javax.persistence.jdbc.password"
-                      value="admin" />
+                      value="123456" />
 
             <!--  propriedades do hibernate -->
             <property name="hibernate.dialect"
@@ -48,7 +48,7 @@
             <property name="javax.persistence.jdbc.user"
                       value="root" />
             <property name="javax.persistence.jdbc.password"
-                      value="admin" />
+                      value="123456" />
 
             <!--  propriedades do hibernate -->
             <property name="hibernate.dialect"
@@ -78,7 +78,7 @@
             <property name="javax.persistence.jdbc.user"
                       value="root" />
             <property name="javax.persistence.jdbc.password"
-                      value="admin" />
+                      value="123456" />
 
             <!--  propriedades do hibernate -->
             <property name="hibernate.dialect"
@@ -108,7 +108,7 @@
             <property name="javax.persistence.jdbc.user"
                       value="root" />
             <property name="javax.persistence.jdbc.password"
-                      value="admin" />
+                      value="123456" />
 
             <!--  propriedades do hibernate -->
             <property name="hibernate.dialect"
@@ -138,7 +138,7 @@
             <property name="javax.persistence.jdbc.user"
                       value="root" />
             <property name="javax.persistence.jdbc.password"
-                      value="admin" />
+                      value="123456" />
 
             <!--  propriedades do hibernate -->
             <property name="hibernate.dialect"
@@ -168,7 +168,7 @@
             <property name="javax.persistence.jdbc.user"
                       value="root" />
             <property name="javax.persistence.jdbc.password"
-                      value="admin" />
+                      value="123456" />
 
             <!--  propriedades do hibernate -->
             <property name="hibernate.dialect"
@@ -197,7 +197,7 @@
             <property name="javax.persistence.jdbc.user"
                       value="root" />
             <property name="javax.persistence.jdbc.password"
-                      value="admin" />
+                      value="123456" />
 
             <!--  propriedades do hibernate -->
             <property name="hibernate.dialect"

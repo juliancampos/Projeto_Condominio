@@ -2,14 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/malua_000/Documents/NetBeansProjects/Condominio/web/restrito/Condominio/listar.xhtml</file>
-            <file>file:/C:/Users/malua_000/Documents/NetBeansProjects/Condominio/src/java/com/condominio/view/CondominioMB.java</file>
-            <file>file:/C:/Users/malua_000/Documents/NetBeansProjects/Condominio/src/java/com/una/adm/model/DAO/ApartamentoDAO.java</file>
-            <file>file:/C:/Users/malua_000/Documents/NetBeansProjects/Condominio/web/restrito/Apartamento/cadastro.xhtml</file>
-            <file>file:/C:/Users/malua_000/Documents/NetBeansProjects/Condominio/web/restrito/Apartamento/listar.xhtml</file>
-            <file>file:/C:/Users/malua_000/Documents/NetBeansProjects/Condominio/src/java/com/una/adm/model/Apartamento.java</file>
-            <file>file:/C:/Users/malua_000/Documents/NetBeansProjects/Condominio/src/java/com/condominio/view/ApartamentoMB.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
